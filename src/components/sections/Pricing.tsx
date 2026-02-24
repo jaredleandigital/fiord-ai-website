@@ -3,13 +3,11 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 const plans = [
   {
     name: "After-Hours",
-    price: "$1,500",
-    period: "/mo",
     description: "AI answers when you can't — evenings, weekends, holidays.",
     features: [
       "AI answers after business hours",
@@ -23,8 +21,6 @@ const plans = [
   },
   {
     name: "Overflow + Booking",
-    price: "$2,000",
-    period: "/mo",
     description:
       "Handles the overflow during busy times and books directly into your calendar.",
     features: [
@@ -39,8 +35,6 @@ const plans = [
   },
   {
     name: "Full 24/7",
-    price: "$3,000",
-    period: "/mo",
     description:
       "Complete AI reception — every call, every hour, every day.",
     features: [
@@ -61,15 +55,15 @@ export function Pricing() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <ScrollReveal className="text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-fjord-accent">
-            Pricing
+            Plans
           </p>
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
-            Simple, Transparent{" "}
-            <span className="gradient-text">Pricing</span>
+            Choose the Right Fit{" "}
+            <span className="gradient-text">For Your Business</span>
           </h2>
           <p className="mx-auto mb-16 max-w-2xl text-muted-foreground">
-            No per-minute charges. No hidden fees. Just a flat monthly rate so
-            you always know what you&apos;re paying.
+            Every plan is tailored to your business. Get in touch and
+            we&apos;ll put together a package that works for you.
           </p>
         </ScrollReveal>
 
@@ -92,17 +86,9 @@ export function Pricing() {
                 )}
 
                 <h3 className="mb-1 text-xl font-semibold">{plan.name}</h3>
-                <p className="mb-4 text-sm text-muted-foreground">
+                <p className="mb-6 text-sm text-muted-foreground">
                   {plan.description}
                 </p>
-
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
-                  <span className="ml-1 text-xs text-muted-foreground">
-                    + GST
-                  </span>
-                </div>
 
                 <ul className="mb-8 flex-1 space-y-3">
                   {plan.features.map((feature, j) => (
@@ -116,9 +102,12 @@ export function Pricing() {
                 <Button
                   asChild
                   variant={plan.highlight ? "default" : "outline"}
-                  className="w-full"
+                  className="w-full gap-2"
                 >
-                  <a href="#contact">Get Started</a>
+                  <a href="#contact">
+                    Enquire Now
+                    <ArrowRight size={16} />
+                  </a>
                 </Button>
               </div>
             ))}

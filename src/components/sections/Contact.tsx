@@ -2,8 +2,6 @@
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
 import { toast } from "sonner";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
@@ -25,8 +23,6 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export function Contact() {
-  const submit = useMutation(api.contacts.submit);
-
   const {
     register,
     handleSubmit,
@@ -41,14 +37,25 @@ export function Contact() {
       return;
     }
 
+    const webhookUrl = process.env.NEXT_PUBLIC_WEBHOOK_URL;
+    if (!webhookUrl) {
+      toast.error("Something went wrong. Please try again.");
+      return;
+    }
+
     try {
-      await submit({
-        name: parsed.data.name,
-        email: parsed.data.email,
-        phone: parsed.data.phone || undefined,
-        businessName: parsed.data.businessName,
-        industry: parsed.data.industry,
-        message: parsed.data.message || undefined,
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: parsed.data.name,
+          email: parsed.data.email,
+          phone: parsed.data.phone || "",
+          businessName: parsed.data.businessName,
+          industry: parsed.data.industry,
+          message: parsed.data.message || "",
+          submittedAt: new Date().toISOString(),
+        }),
       });
       toast.success("Thanks! We'll be in touch within 24 hours.");
       reset();
