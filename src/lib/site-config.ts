@@ -6,7 +6,7 @@ export const siteConfig = {
   url: "https://fiord.ai",
   contact: {
     email: "hello@fiord.ai",
-    phone: "+64 800 346 731",
+    phone: "+64 274 553 832",
   },
   nav: [
     { label: "Problem", href: "#problem" },

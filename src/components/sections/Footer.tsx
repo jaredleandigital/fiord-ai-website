@@ -21,7 +21,12 @@ export function Footer() {
             >
               {siteConfig.contact.email}
             </a>
-            <span>{siteConfig.contact.phone}</span>
+            <a
+              href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
+              className="transition-colors hover:text-foreground"
+            >
+              {siteConfig.contact.phone}
+            </a>
           </div>
         </div>
 
