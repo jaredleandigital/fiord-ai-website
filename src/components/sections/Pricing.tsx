@@ -2,7 +2,6 @@
 
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Check, ArrowRight } from "lucide-react";
 
 const plans = [
@@ -17,7 +16,6 @@ const plans = [
       "Call transcripts & summaries",
       "Monthly reporting",
     ],
-    highlight: false,
   },
   {
     name: "Overflow + Booking",
@@ -31,7 +29,6 @@ const plans = [
       "Custom greeting & hold music",
       "Priority email support",
     ],
-    highlight: true,
   },
   {
     name: "Full 24/7",
@@ -45,7 +42,6 @@ const plans = [
       "Advanced analytics dashboard",
       "Dedicated account manager",
     ],
-    highlight: false,
   },
 ];
 
@@ -73,18 +69,8 @@ export function Pricing() {
               <div
                 key={i}
                 data-stagger
-                className={`card-hover relative flex flex-col rounded-xl border p-8 ${
-                  plan.highlight
-                    ? "border-primary bg-card shadow-lg shadow-primary/10"
-                    : "border-border bg-card"
-                }`}
+                className="card-hover flex flex-col rounded-xl border border-border bg-card p-8"
               >
-                {plan.highlight && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
-                    Most Popular
-                  </Badge>
-                )}
-
                 <h3 className="mb-1 text-xl font-semibold">{plan.name}</h3>
                 <p className="mb-6 text-sm text-muted-foreground">
                   {plan.description}
@@ -99,11 +85,7 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                <Button
-                  asChild
-                  variant={plan.highlight ? "default" : "outline"}
-                  className="w-full gap-2"
-                >
+                <Button asChild variant="outline" className="w-full gap-2">
                   <a href="#contact">
                     Enquire Now
                     <ArrowRight size={16} />

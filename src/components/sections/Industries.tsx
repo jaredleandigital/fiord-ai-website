@@ -7,6 +7,7 @@ import {
   Home,
   Scale,
   Heart,
+  Building2,
 } from "lucide-react";
 
 const industries = [
@@ -44,6 +45,13 @@ const industries = [
     examples: "Vet clinics & animal hospitals",
     description:
       "Triage after-hours calls, book appointments, and provide opening hours — while your team focuses on patients.",
+  },
+  {
+    icon: Building2,
+    title: "Other Industries",
+    examples: "Accounting, consulting, medical, beauty & more",
+    description:
+      "If your business takes phone calls, Fiord AI can handle them. We customise every agent to fit your workflow.",
   },
 ];
 
