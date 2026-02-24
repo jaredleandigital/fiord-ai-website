@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/site-config";
+import { Linkedin, Facebook } from "lucide-react";
 
 export function Footer() {
   return (
@@ -14,7 +15,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground sm:items-end">
+          <div className="flex flex-col items-center gap-3 text-sm text-muted-foreground sm:items-end">
             <a
               href={`mailto:${siteConfig.contact.email}`}
               className="transition-colors hover:text-foreground"
@@ -27,6 +28,21 @@ export function Footer() {
             >
               {siteConfig.contact.phone}
             </a>
+            <div className="flex gap-3">
+              {siteConfig.social.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label === "LinkedIn" && <Linkedin className="h-5 w-5" />}
+                  {item.label === "Facebook" && <Facebook className="h-5 w-5" />}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

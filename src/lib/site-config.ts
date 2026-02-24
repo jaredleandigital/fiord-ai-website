@@ -8,6 +8,16 @@ export const siteConfig = {
     email: "hello@fiord.ai",
     phone: "+64 274 553 832",
   },
+  social: [
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/fiord-ai",
+    },
+    {
+      label: "Facebook",
+      href: "https://web.facebook.com/profile.php?id=61588246516721",
+    },
+  ],
   nav: [
     { label: "Problem", href: "#problem" },
     { label: "Solution", href: "#solution" },
